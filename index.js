@@ -21,14 +21,13 @@ app.get("/noAuth", async (req, res) => {
       const result = await axios.get(API_URL + "/random");
       res.render("index.ejs", {content: JSON.stringify(result.data)});
     } catch (error) {
-      res.status(404).send(error.message);
+      res.status(404).send("error", error.message);
     }
   });
 
 app.get("/basicAuth", async (req, res) => {
     try {
       const result = await axios.get(API_URL + "/all?page=2",
-      {},
       {
         auth: {
           username: yourUsername,
@@ -38,7 +37,7 @@ app.get("/basicAuth", async (req, res) => {
     );
       res.render("index.ejs", {content: JSON.stringify(result.data)});
     } catch (error) {
-      res.status(404).send(error.message);
+      res.status(404).send("error", error.message);
     }
 });
 
@@ -48,17 +47,17 @@ app.get("/apiKey",async (req, res) => {
       params: {
       score: 5,
       apiKey: yourAPIKey,
-      }
+      },
     });
     res.render("index.ejs", {content: JSON.stringify(result.data)});
   } catch (error) {
-    res.status(404).send(error.message);
+    res.status(404).send("error", error.message);
   }
 });
 
 app.get("/bearerToken", async(req, res) => {
   try {
-    const result = await axios.get(API_URL + "/secrets?id=2",
+    const result = await axios.get(API_URL + "/secrets/2",
       {
         headers: { 
           Authorization: `Bearer ${yourBearerToken}` 
@@ -66,7 +65,7 @@ app.get("/bearerToken", async(req, res) => {
       });
     res.render("index.ejs", {content: JSON.stringify(result.data)});
   } catch (error) {
-    res.status(404).send(error.message);
+    res.status(404).send("error", error.message);
   }
 });
 
