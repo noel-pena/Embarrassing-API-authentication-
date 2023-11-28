@@ -5,7 +5,7 @@ const app = express();
 const port = 3000;
 const API_URL = "https://secrets-api.appbrewery.com";
 
-const yourUsername = "<create username through api site";
+const yourUsername = "<create username through api site>";
 const yourPassword = "<create password through api site>";
 const yourAPIKey = "93b1edbd-92b3-44de-9933-699cfa8aa185";
 //if api is wrong, use api instructions under the api key section
